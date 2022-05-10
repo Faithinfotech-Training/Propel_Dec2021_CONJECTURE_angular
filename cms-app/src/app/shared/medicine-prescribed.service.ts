@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
+import { MedicinePrescribed } from './medicine-prescribed';
 import { Medicine } from './medicine'
 import { Labtest } from './labtest';
-import { MedicinePrescribed } from './medicine-prescribed';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class MedicineService {
+export class MedicinePrescribedService {
 
   medicinePrescribed: MedicinePrescribed[];
 
   medicines: Medicine[];
-  formData: Medicine = new Medicine();
+  formData: MedicinePrescribed = new MedicinePrescribed();
   tests: Labtest[];
 
   constructor(private httpClient: HttpClient) { }
@@ -28,5 +29,15 @@ export class MedicineService {
   updateConsultationMedicine(conmed: MedicinePrescribed): Observable<any>{
     return this.httpClient.put(environment.apiUrl+'/api/medpres/',conmed);
   }
+
+  // Get medicines from dropdownList
+  // get all medicines or Method for Binding all medicines
+  getAllMedicines(){
+    this.httpClient.get(environment.apiUrl+'/api/medicines')
+      .toPromise().then(response =>
+        this.medicines= response as Medicine[]);
+  }
+
+
 
 }

@@ -7,4 +7,5 @@ export class MedicinePrescribed {
     consultationID: number=0;
     medinterval: string='';
     dosage: string='';
+    interval: string='';
 }

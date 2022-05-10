@@ -4,7 +4,7 @@
 <form name="conform" #form="ngForm" autocomplete="off" novalidate
 (ngSubmit)="onSubmit(form)">
 
-    <input type="number" name="id" [(ngModel)]="consultationService.formData.consultationID">
+    <input type="number" name="id" [(ngModel)]="consultationService.formData.appointmentID">
 
     <!--Diaganosis-->
     <div class="form-group" class="input-group mb-3">
@@ -22,108 +22,14 @@
         </div>
     </div>
 
-    <div>
-        <form name="medform" #form="ngForm" autocomplete="off" novalidate
-            (ngSubmit)="onSubmitMed(form)">
-        
-            <input type="number" name="id" 
-                [(ngModel)]="consultationService.formData.consultationID">
+    <!-- impoting medicine prescribed component-->
+    <app-medicine-prescribed></app-medicine-prescribed>
 
-            <!--Medicine Dropdown-->
-            <div class="form-group"class="input-group mb-3">
-                <span class="input-group-text">Medicine</span>
-                <select name="medicineID" id="medicineID"
-                class="form-control" required 
-                #medicineID="ngModel"
-                [(ngModel)]="consultationService.formData.medicinePrescribed"
-                >
-                    <option default>Choose Medicine</option>
-                    <option *ngFor="let med of consultationService.medicines"
-                    value="{{med.medicineid}}">{{med.medicineName}}</option>
-                </select>
+    <!-- impoting lab tests component-->
+    <app-lab-test-prescribed></app-lab-test-prescribed>
 
-                <span class="input-group-text">Dosage</span>
-                <select name="departmentid" id="departmentid"
-                class="form-control">
-                <option default>Choose Dosage</option>
-                <option value="0-0-1" >0-0-1</option>
-                <option value="0-1-0" >0-1-0</option>
-                <option value="0-1-1" >0-1-1</option>
-                <option value="1-0-0" >1-0-0</option>
-                <option value="1-0-1" >1-0-1</option>
-                <option value="1-1-0" >1-1-0</option>
-                <option value="1-1-1" >1-1-1</option>
-
-                </select>
-                
-                <span class="input-group-text">Interval</span>
-                <select name="departmentid" id="departmentid"
-                class="form-control">
-                <option default>Choose Interval</option>
-                <option value="Dosage One" >Dosage One</option>
-                <option value="Dosage Two" >Dosage Two</option>
-                <option value="Dosage Three" >Dosage Three</option>
-                </select>
-
-                <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
-                <div class="validation-error" 
-                    *ngIf="medicineID.touched && medicineID.invalid">
-                <div *ngIf="medicineID.errors">Medicine is Required</div>
-            </div>
-            </div>
-
-        </form>
-    </div>
-
-    <div>
-        <form name="testform" #form="ngForm" autocomplete="off" novalidate
-            (ngSubmit)="onSubmitTest(form)">
-        
-
-            <div class="form-group"class="input-group mb-3">
-                <span class="input-group-text">Lab Test</span>
-                <select name="testID" id="testID"
-                class="form-control" required 
-                #testID="ngModel"
-                [(ngModel)]="consultationService.formData.labTestPrescribed"
-                >
-                    <option default>Choose Test</option>
-                    <option *ngFor="let test of consultationService.tests"
-                    value="{{test.testID}}">{{test.testName}}</option>
-                </select>
-
-                <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
-            </div>
-
-        </form>
-    </div>
-
-    <div>
-        <form name="testform" #form="ngForm" autocomplete="off" novalidate
-            (ngSubmit)="onSubmitTest(form)"></form>
-    </div>
-
-    <div>
-        <form name="noteform" #form="ngForm" autocomplete="off" novalidate
-            (ngSubmit)="onSubmitNote(form)">
-            <div class="form-group" class="input-group mb-3">
-                <span class="input-group-text" >Notes</span>
-                <textarea name="diagonosis" id="diagonosis"
-                    #diagonosis="ngModel" 
-                    [(ngModel)]="consultationService.formData.diagonosis"
-                    type="text" class="form-control"
-                    placeholder="Enter Notes"
-                    minlength="3" maxlength="25" required
-                    [ngClass]="{'is-invalid':diagonosis.touched && diagonosis.invalid}" 
-                ></textarea>
-                <div class="validation-error" *ngIf="diagonosis.touched && diagonosis.invalid">
-                    <div *ngIf="diagonosis.errors">Notes Required</div>
-                </div>
-                <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
-            </div>
-        
-        </form>
-    </div>
+    <!-- impoting notes component-->
+    <app-note></app-note>
     
     <hr>
 

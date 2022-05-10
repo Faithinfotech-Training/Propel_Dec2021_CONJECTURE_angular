@@ -13,6 +13,15 @@ import { ConsultationComponent } from './consultations/consultation/consultation
 import { ConsultationListComponent } from './consultations/consultation-list/consultation-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MedicinesPrescribedComponent } from './medicines-prescribed/medicines-prescribed.component';
+import { MedicinePrescribedComponent } from './medicines-prescribed/medicine-prescribed/medicine-prescribed.component';
+import { MedicinePrescribedListComponent } from './medicines-prescribed/medicine-prescribed-list/medicine-prescribed-list.component';
+import { LabTestsPrescribedComponent } from './lab-tests-prescribed/lab-tests-prescribed.component';
+import { LabTestPrescribedComponent } from './lab-tests-prescribed/lab-test-prescribed/lab-test-prescribed.component';
+import { LabTestPrescribedListComponent } from './lab-tests-prescribed/lab-test-prescribed-list/lab-test-prescribed-list.component';
+import { NotesComponent } from './notes/notes.component';
+import { NoteComponent } from './notes/note/note.component';
+import { NoteListComponent } from './notes/note-list/note-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +32,15 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ConsultationsComponent,
     ConsultationComponent,
     ConsultationListComponent,
+    MedicinesPrescribedComponent,
+    MedicinePrescribedComponent,
+    MedicinePrescribedListComponent,
+    LabTestsPrescribedComponent,
+    LabTestPrescribedComponent,
+    LabTestPrescribedListComponent,
+    NotesComponent,
+    NoteComponent,
+    NoteListComponent,
   ],
   imports: [
     BrowserModule,

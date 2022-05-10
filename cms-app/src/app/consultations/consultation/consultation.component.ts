@@ -89,7 +89,7 @@ export class ConsultationComponent implements OnInit {
         this.resetForm(form);
       }
     );
-    window.location.reload();
+    // window.location.reload();
   }
 
   //Update

@@ -1,0 +1,26 @@
+<div>
+    <form name="noteform" #form="ngForm" autocomplete="off" novalidate
+        (ngSubmit)="onSubmitNote(form)">
+
+        <input type="number" name="consultationID" 
+            [(ngModel)]="noteService.formData.consultationID">
+
+
+        <div class="form-group" class="input-group mb-3">
+            <span class="input-group-text" >Notes</span>
+            <textarea name="notes" id="notes"
+                #notes="ngModel" 
+                [(ngModel)]="noteService.formData.notes"
+                type="text" class="form-control"
+                placeholder="Enter Notes"
+                minlength="3" maxlength="25" required
+                [ngClass]="{'is-invalid':notes.touched && notes.invalid}" 
+            ></textarea>
+            <div class="validation-error" *ngIf="notes.touched && notes.invalid">
+                <div *ngIf="notes.errors">Notes Required</div>
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
+        </div>
+    
+    </form>
+</div>

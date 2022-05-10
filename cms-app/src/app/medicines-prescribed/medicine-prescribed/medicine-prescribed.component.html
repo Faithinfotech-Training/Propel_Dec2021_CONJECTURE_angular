@@ -1,0 +1,56 @@
+<div>
+    <form name="medform" #form="ngForm" autocomplete="off" novalidate
+        (ngSubmit)="onSubmitMed(form)">
+    
+        <input type="number" name="consultationID" 
+            [(ngModel)]="medicinePrescribedService.formData.consultationID">
+
+        <!--Medicine Dropdown-->
+        <div class="form-group"class="input-group mb-3">
+            <span class="input-group-text">Medicine</span>
+            <select name="medicineID" id="medicineID"
+            class="form-control" required 
+            #medicineID="ngModel"
+            [(ngModel)]="medicinePrescribedService.formData.medicineID"
+            >
+                <option default>Choose Medicine</option>
+                <option *ngFor="let med of medicinePrescribedService.medicines"
+                value="{{med.medicineID}}">{{med.medicineName}}</option>
+            </select>
+
+            <span class="input-group-text">Dosage</span>
+            <select name="dosage" id="dosage"
+            class="form-control" required 
+            #dosage="ngModel"
+            [(ngModel)]="medicinePrescribedService.formData.dosage">
+            <option default>Choose Dosage</option>
+            <option value="0-0-1" >0-0-1</option>
+            <option value="0-1-0" >0-1-0</option>
+            <option value="0-1-1" >0-1-1</option>
+            <option value="1-0-0" >1-0-0</option>
+            <option value="1-0-1" >1-0-1</option>
+            <option value="1-1-0" >1-1-0</option>
+            <option value="1-1-1" >1-1-1</option>
+
+            </select>
+            
+            <span class="input-group-text">Interval</span>
+            <select name="medinterval" id="medinterval"
+            class="form-control" required 
+            #medinterval="ngModel"
+            [(ngModel)]="medicinePrescribedService.formData.medinterval">
+            <option default>Choose Interval</option>
+            <option value="Dosage One" >Dosage One</option>
+            <option value="Dosage Two" >Dosage Two</option>
+            <option value="Dosage Three" >Dosage Three</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">Add</button>
+            <div class="validation-error" 
+                *ngIf="medicineID.touched && medicineID.invalid">
+            <div *ngIf="medicineID.errors"></div>
+        </div>
+        </div>
+
+    </form>
+</div>

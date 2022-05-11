@@ -1,1 +1,35 @@
-<p>appointment works!</p>
+<div class="card-header" style="margin-bottom: 5px;">
+    New Appointment
+</div>
+<form name="appform" #form="ngForm" autocomplete="off" novalidate
+(ngSubmit)="onSubmit(form)">
+    <!--id-->
+    <input type="hidden" name="id" [(ngModel)]="appointmentService.formData.appointmentID">
+
+    <!--Doctor Dropdown-->
+    <div class="form-group"class="input-group mb-3">
+        <span class="input-group-text">-Doctor - Department-</span>
+        <select name="doctorID" id="doctorID"
+        class="form-control" required 
+        #doctorID="ngModel"
+        [(ngModel)]="appointmentService.formData.doctorID"
+        >
+            <option value=0 disabled>Choose Doctor - Department</option>
+            <option *ngFor="let docdep of appointmentService.doctors"
+            value="{{docdep.doctorID}}">{{docdep.staff.fullName}} | {{docdep.departments.departmentName}} | {{docdep.specialization.specialization}}</option>
+        </select>
+        <div class="validation-error" 
+            *ngIf="doctorID.touched && doctorID.invalid">
+            <div *ngIf="doctorID.errors">Department is Required</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div style="margin-top: 10px" class="form-group">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Submit</button>
+        </div>
+    </div>
+
+</form>

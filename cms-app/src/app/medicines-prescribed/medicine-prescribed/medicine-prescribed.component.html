@@ -45,7 +45,7 @@
             <option value="Dosage Three" >Dosage Three</option>
             </select>
 
-            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
             <div class="validation-error" 
                 *ngIf="medicineID.touched && medicineID.invalid">
             <div *ngIf="medicineID.errors"></div>

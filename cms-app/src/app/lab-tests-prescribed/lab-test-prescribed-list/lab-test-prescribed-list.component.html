@@ -1,1 +1,28 @@
-<p>lab-test-prescribed-list works!</p>
+<div class="container" style="margin-top: 15px;">
+    <!-- <div class="header">
+        <input class="form-control" type="text"
+            placeholder="Search Here ... " 
+            [(ngModel)]="filter"    
+        />
+    <br/>
+    </div> -->
+    <a class="btn btn-outline-secondary" style="float:right; margin-bottom: 10px;" 
+    [routerLink]="['../emp']"> Add Lab Test  <i class="bi bi-person-plus"></i> </a>
+    <div class="card-header">
+      <i class="bi bi-person-lines-fill"></i>  Lab tests
+    </div>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Test Name</th>
+                <th>Consultation ID</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <!-- <div class="footer">
+        <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+    </div> -->
+</div>

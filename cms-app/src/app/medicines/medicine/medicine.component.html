@@ -1,0 +1,128 @@
+<form name="medicineform" #form="ngForm" autocomplete="off" novalidate
+    (ngSubmit) ="onSubmit(form)">
+    <!--Id-->
+<input type="text" name="id" [(ngModel)]="medicineService.formData.medicineID">
+
+<!--enter test Name-->
+<div class="form-group">
+    <label>medicine Name</label>
+    <input name="medicineName" id="medicineName"
+    #medicineName="ngModel"
+    [(ngModel)]="medicineService.formData.medicineName"
+    class="form-control" placeholder="Enter medicine name"
+    minlength="3" maxlength="25" required
+    [ngClass]="{'is-valid':medicineName.touched && medicineName.invalid}">
+    <div class="validation-error"
+    *ngIf="medicineName.touched && medicineName.invalid">
+    <div *ngIf="medicineName.errors">
+        Invalid medicine name
+    </div>
+
+    </div>
+</div>
+
+<!--enter generic Name-->
+<div class="form-group">
+    <label>generic Name</label>
+    <input name="genericName" id="genericName"
+    #genericName="ngModel"
+    [(ngModel)]="medicineService.formData.genericName"
+    class="form-control" placeholder="Enter generic name"
+    minlength="3" maxlength="25" required
+    [ngClass]="{'is-valid':genericName.touched && genericName.invalid}">
+    <div class="validation-error"
+    *ngIf="genericName.touched && genericName.invalid">
+    <div *ngIf="genericName.errors">
+        Invalid generic name
+    </div>
+
+    </div>
+</div>
+
+<!--enter company Name-->
+<div class="form-group">
+    <label>company Name</label>
+    <input name="companyName" id="companyName"
+    #companyName="ngModel"
+    [(ngModel)]="medicineService.formData.companyName"
+    class="form-control" placeholder="Enter company name"
+    minlength="3" maxlength="25" required
+    [ngClass]="{'is-valid':companyName.touched && companyName.invalid}">
+    <div class="validation-error"
+    *ngIf="companyName.touched && companyName.invalid">
+    <div *ngIf="companyName.errors">
+        Invalid company name
+    </div>
+
+    </div>
+</div>
+
+<!--enter quantity -->
+<div class="form-group">
+    <label>quantity </label>
+    <input name="quantity" id="quantity"
+    #quantity="ngModel"
+    [(ngModel)]="medicineService.formData.quantity"
+    class="form-control" placeholder="Enter quantity "
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':quantity.touched && quantity.invalid}">
+    <div class="validation-error"
+    *ngIf="quantity.touched && quantity.invalid">
+    <div *ngIf="quantity.errors">
+        Invalid  quantity
+    </div>
+
+    </div>
+</div>
+
+
+<!--price-->
+<div class="form-group">
+    <label> price </label>
+    <input name="price" id="price"
+    #price="ngModel"
+    [(ngModel)]="medicineService.formData.price"
+    class="form-control" placeholder="Enter price"
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':price.touched && price.invalid}">
+    <div class="validation-error"
+    *ngIf="price.touched && price.invalid">
+    <div *ngIf="price.errors">
+        Invalid price
+    </div>
+
+    </div>
+</div>
+
+<!--enter isActive-->
+<div class="form-group">
+    <label>is Active</label>
+    <input name="isActive" id="isActive"
+    #isActive="ngModel"
+    [(ngModel)]="medicineService.formData.isActive"
+    class="form-control" placeholder="Enter isActive"
+    minlength="1" maxlength="2" required
+    [ngClass]="{'is-valid':isActive.touched && isActive.invalid}">
+    <div class="validation-error"
+    *ngIf="isActive.touched && isActive.invalid">
+    <div *ngIf="isActive.errors">
+        Invalid isActive
+    </div>
+
+    </div>
+</div>
+
+
+<!--submit button-->
+<div class="form-group">
+    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+    class="btn btn-lg btn-primary form-control">Submit</button>
+
+</div>
+
+</form>
+
+
+
+
+

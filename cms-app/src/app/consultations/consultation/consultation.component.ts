@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConsultationService } from 'src/app/shared/consultation.service';
 
@@ -10,10 +11,19 @@ import { ConsultationService } from 'src/app/shared/consultation.service';
 })
 export class ConsultationComponent implements OnInit {
 
+  appID: number;
+
   constructor(public consultationService: ConsultationService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.appID=this.route.snapshot.params['appID'];
+    console.log("in app comp")
+    console.log("in appointment component id "+this.appID);
+
+
     this.consultationService.getAllMedicines();
     this.consultationService.getAllTests();
   }

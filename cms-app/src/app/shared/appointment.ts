@@ -10,7 +10,7 @@ export class Appointment {
     patientID: string='';
     dateOfAppointment: Date = new Date;
     createdOn: Date = new Date;
-    active: boolean=false;
+    active: boolean=true;
     doctor: Doctor[];
     patient: Patient[];
 }

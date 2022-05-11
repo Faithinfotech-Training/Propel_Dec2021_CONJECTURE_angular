@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/shared/appointment.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -10,13 +11,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppointmentComponent implements OnInit {
 
+  pID: number;
+
   constructor(public appointmentService: AppointmentService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
 
+    this.pID=this.route.snapshot.params['pID'];
+    console.log("in app comp")
+    console.log("in appointment component id "+this.pID);
+
     this.appointmentService.getAllDoctors();
     this.appointmentService.getAllPatients();
+
   }
 
   //reset Form

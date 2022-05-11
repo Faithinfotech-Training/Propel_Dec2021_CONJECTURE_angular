@@ -6,6 +6,24 @@
     <!--id-->
     <input type="hidden" name="id" [(ngModel)]="appointmentService.formData.appointmentID">
 
+<!--Patient Dropdown-->
+<div class="form-group"class="input-group mb-3">
+    <span class="input-group-text">Patient</span>
+    <select name="patientID" id="patientID"
+    class="form-control" required 
+    #patientID="ngModel"
+    [(ngModel)]="appointmentService.formData.patientID"
+    >
+        <option value=0 disabled>Choose Patient</option>
+        <option *ngFor="let pat of appointmentService.patients"
+        value="{{pat.patientID}}">{{pat.fullName}}</option>
+    </select>
+    <div class="validation-error" 
+        *ngIf="patientID.touched && patientID.invalid">
+        <div *ngIf="patientID.errors">Patient is Required</div>
+    </div>
+</div>
+
     <!--Doctor Dropdown-->
     <div class="form-group"class="input-group mb-3">
         <span class="input-group-text">-Doctor - Department-</span>
@@ -20,7 +38,37 @@
         </select>
         <div class="validation-error" 
             *ngIf="doctorID.touched && doctorID.invalid">
-            <div *ngIf="doctorID.errors">Department is Required</div>
+            <div *ngIf="doctorID.errors">Doctor is Required</div>
+        </div>
+    </div>
+
+    <div class="form-group" class="input-group mb-3">
+        <span class="input-group-text" >Token:</span>
+        <input name="tokenNumber" id="tokenNumber"
+            #tokenNumber="ngModel" 
+            [(ngModel)]="appointmentService.formData.tokenNumber"
+            type="text" class="form-control"
+            placeholder="Enter Token Number"
+            minlength="3" maxlength="25" required
+            [ngClass]="{'is-invalid':tokenNumber.touched && tokenNumber.invalid}" 
+        >
+        <div class="validation-error" *ngIf="tokenNumber.touched && tokenNumber.invalid">
+            <div *ngIf="tokenNumber.errors">Token Number Required</div>
+        </div>
+    </div>
+
+    <!--Date Of Appointment-->
+    <div class="form-group"class="input-group mb-3">
+        <span class="input-group-text">Date Of Appointment</span>
+        <input name="dateOfAppointment" id="dateOfAppointment"
+            #dateOfAppointment="ngModel" 
+            [(ngModel)]="appointmentService.formData.dateOfAppointment"
+            type="date" class="form-control"
+            minlength="3" maxlength="25" required
+            [ngClass]="{'is-invalid':dateOfAppointment.touched && dateOfAppointment.invalid}" 
+        >
+        <div class="validation-error" *ngIf="dateOfAppointment.touched && dateOfAppointment.invalid">
+            <div *ngIf="dateOfAppointment.errors">Date Of Appointment is Required</div>
         </div>
     </div>
 

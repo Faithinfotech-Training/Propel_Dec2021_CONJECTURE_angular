@@ -22,6 +22,11 @@ import { LabTestPrescribedListComponent } from './lab-tests-prescribed/lab-test-
 import { NotesComponent } from './notes/notes.component';
 import { NoteComponent } from './notes/note/note.component';
 import { NoteListComponent } from './notes/note-list/note-list.component';
+import { MedicinesComponent } from './medicines/medicines.component';
+import { MedicineComponent } from './medicines/medicine/medicine.component';
+import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
+import { EditmedicineComponent } from './medicines/editmedicine/editmedicine.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +46,10 @@ import { NoteListComponent } from './notes/note-list/note-list.component';
     NotesComponent,
     NoteComponent,
     NoteListComponent,
+    MedicinesComponent,
+    MedicineComponent,
+    MedicineListComponent,
+    EditmedicineComponent
   ],
   imports: [
     BrowserModule,

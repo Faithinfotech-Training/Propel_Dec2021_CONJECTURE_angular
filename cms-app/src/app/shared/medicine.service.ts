@@ -29,4 +29,24 @@ export class MedicineService {
     return this.httpClient.put(environment.apiUrl+'/api/medpres/',conmed);
   }
 
+  //get all medicines
+  getAllMedicines(){
+    this.httpClient.get(environment.apiUrl+'api/medicines')
+    .toPromise().then(response =>
+      this.medicines=response as Medicine[])
+  }
+
+  //get a particular medicine
+
+  //insert medicine
+  insertMedicine(medicine: Medicine): Observable <any>{
+    return this.httpClient.post(environment.apiUrl+ '/api/medicines/' ,medicine);
+  }
+
+  //update medicine
+  updateMedicine(medicine: Medicine): Observable <any>{
+    return this.httpClient.put(environment.apiUrl +'/api/medicines/' , medicine);
+  }
+
+
 }

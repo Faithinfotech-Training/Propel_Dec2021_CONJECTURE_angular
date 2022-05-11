@@ -29,11 +29,12 @@ export class MedicineService {
     return this.httpClient.put(environment.apiUrl+'/api/medpres/',conmed);
   }
 
-  //get all medicines
+  // Get medicines from dropdownList
+  // get all medicines or Method for Binding all medicines
   getAllMedicines(){
-    this.httpClient.get(environment.apiUrl+'api/medicines')
-    .toPromise().then(response =>
-      this.medicines=response as Medicine[])
+    this.httpClient.get(environment.apiUrl+'/api/medicines')
+      .toPromise().then(response =>
+        this.medicines= response as Medicine[]);
   }
 
   //get a particular medicine
@@ -48,5 +49,6 @@ export class MedicineService {
     return this.httpClient.put(environment.apiUrl +'/api/medicines/' , medicine);
   }
 
+  
 
 }

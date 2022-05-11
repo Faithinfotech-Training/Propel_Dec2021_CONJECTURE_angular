@@ -26,6 +26,7 @@ import { MedicinesComponent } from './medicines/medicines.component';
 import { MedicineComponent } from './medicines/medicine/medicine.component';
 import { MedicineListComponent } from './medicines/medicine-list/medicine-list.component';
 import { EditmedicineComponent } from './medicines/editmedicine/editmedicine.component';
+import { TestpageComponent } from './testpage/testpage.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EditmedicineComponent } from './medicines/editmedicine/editmedicine.com
     MedicinesComponent,
     MedicineComponent,
     MedicineListComponent,
-    EditmedicineComponent
+    EditmedicineComponent,
+    TestpageComponent
   ],
   imports: [
     BrowserModule,

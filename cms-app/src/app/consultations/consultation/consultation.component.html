@@ -3,8 +3,8 @@
 </div>
 <form name="conform" #form="ngForm" autocomplete="off" novalidate
 (ngSubmit)="onSubmit(form)">
-
-    <input type="number" name="id" [(ngModel)]="consultationService.formData.appointmentID">
+    <p>Appointment Id: {{appID}}</p>
+    <input type="number" value="{{appID}}" name="id" [(ngModel)]="consultationService.formData.appointmentID">
 
     <!--Diaganosis-->
     <div class="form-group" class="input-group mb-3">

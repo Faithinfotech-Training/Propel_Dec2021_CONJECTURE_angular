@@ -28,7 +28,7 @@
               <td>{{app.active}}</td>
               <td>{{app.patient.fullName}}</td>
               <td>{{app.doctor.staff.fullName}}</td>
-              <td><button type="button" class="btn btn-success">Consult</button></td>
+              <td><button (click)="consultPatient(app.appointmentID)" type="button" class="btn btn-success">Consult</button></td>
           </tr>
       </tbody>
   </table>

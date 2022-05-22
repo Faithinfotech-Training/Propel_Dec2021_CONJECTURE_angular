@@ -1,0 +1,62 @@
+<app-header></app-header>
+
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+    <h2>Doctor Dashboard</h2>
+
+	<div class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col"><span class="h6 font-semibold text-muted text-sm d-block mb-2">Consultations Done</span>
+                    <span class="h3 font-bold mb-0">0{{consultCount}}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-primary text-white text-lg rounded-circle"><i class="bi bi-people"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2 mb-0 text-sm"><span class="badge badge-pill bg-soft-success text-success me-2"><i
+                      class="bi bi-arrow-up me-1">UP</i>23% </span><span class="text-nowrap text-xs text-muted">Since Yesterday</span></div>
+              </div>
+            </div>
+		</div>
+
+		<div class="col">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col"><span class="h6 font-semibold text-muted text-sm d-block mb-2">Appointments Today</span> <span
+                      class="h3 font-bold mb-0">02</span>
+					</div>
+                  <div class="col-auto">
+                    <div class="icon icon-shape bg-primary text-white text-lg rounded-circle"><i class="bi bi-people"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-2 mb-0 text-sm"><span class="badge badge-pill bg-soft-success text-success me-2"><i
+                      class="bi bi-arrow-up me-1"></i></span><span class="text-nowrap text-xs text-muted">Since
+                    Yesterday</span>
+                </div>
+              </div>
+            </div>
+		</div>
+	</div>
+    <nav id="navbar-example2" class="navbar navbar-light bg-light" class="navbarlight">
+		<a class="navbar-brand" href="/appointmentList"  >View Appointments List</a>
+	</nav>
+
+    <nav id="navbar-example2" class="navbar navbar-light bg-light" class="navbarlight">
+		<a class="navbar-brand " href="/consultationList" >View Consultations List</a>
+	</nav>
+
+	<nav id="navbar-example2" class="navbar navbar-light bg-light" class="navbarlight">
+		<a class="navbar-brand " href="/medPresList" >View Medicines Prescribed List</a>
+	</nav>
+
+	<nav id="navbar-example2" class="navbar navbar-light bg-light" class="navbarlight">
+		<a class="navbar-brand " href="/labTestList" >View Lab Test Prescribed List</a>
+	</nav>
+</div>
+<router-outlet></router-outlet>

@@ -1,1 +1,35 @@
-<p>medicine-prescribed-list works!</p>
+<div class="card-header">
+    <i class="bi bi-person-lines-fill"></i>  Medicine Prescribed-List
+</div>
+<div class="header">
+    <input class="form-control" type="text"
+        placeholder="Search Here ... " 
+        [(ngModel)]="filter"    
+    />
+<br/>
+</div>
+  <table class="table table-dark table-hover">
+      <thead>
+          <tr>
+              <th>Appointment ID</th>
+              <th>Patient Name</th>
+              <th>Medicine</th>
+              <th>Dosage</th>
+              <th>Interval</th>
+              <th>Doctor Name</th>
+              <td>Action</td>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let medpre of medicinePrescribedService.medicinePrescribed | filter: filter" >
+              <td>{{medpre.appointmentID}}</td>
+              <td>{{medpre.appointment.patient.fullName}}</td>
+              <td>{{medpre.medicine.medicineName}}</td>
+              <td>{{medpre.dosage}}</td>
+              <td>{{medpre.interval}}</td>
+              <td>{{medpre.appointment.doctor.staff.fullName}}</td>
+              <td><button type="button" class="btn btn-success">Bill</button></td>
+
+          </tr>
+      </tbody>
+  </table>

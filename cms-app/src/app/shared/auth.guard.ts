@@ -13,8 +13,15 @@ export class AuthGuard implements CanActivate {
     }
   canActivate(
     route: ActivatedRouteSnapshot): boolean {
-          
-    return true;
+    //expected role: from url
+    const expectedRole = route.data.role;
+    //current role: Sessionstorage
+    const currentRole=sessionStorage.getItem("ACCESS_ROLE");
+    if(currentRole !==expectedRole){
+      this.router.navigateByUrl('login');
+    return false;
+  }
+  return true;
   }
   
 }

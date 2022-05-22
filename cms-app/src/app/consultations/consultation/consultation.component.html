@@ -4,9 +4,9 @@
 <form name="conform" #form="ngForm" autocomplete="off" novalidate
 (ngSubmit)="onSubmit(form)">
     <p>Appointment Id: {{appID}}</p>
-    <input type="number" value="{{appID}}" name="id" [(ngModel)]="consultationService.formData.appointmentID">
+    <input type="number" hidden name="id" [(ngModel)]="consultationService.formData.appointmentID">
 
-    <!--Diaganosis-->
+    <!--Diagonosis-->
     <div class="form-group" class="input-group mb-3">
         <span class="input-group-text" >Diagnosis</span>
         <input name="diagonosis" id="diagonosis"
@@ -23,13 +23,127 @@
     </div>
 
     <!-- impoting medicine prescribed component-->
-    <app-medicine-prescribed></app-medicine-prescribed>
+    <!-- <app-medicine-prescribed></app-medicine-prescribed> -->
+    <div>
+        <form name="medform" #form="ngForm" autocomplete="off" novalidate
+            (ngSubmit)="onSubmitMed(form)">
+        
+            <!-- <input type="number" name="consultationID" 
+                [(ngModel)]="medicinePrescribedService.formData.consultationID"> -->
+
+            <input type="number" hidden name="id"
+                [(ngModel)]="medicinePrescribedService.formData.appointmentID">
+    
+            <!--Medicine Dropdown-->
+            <div class="form-group"class="input-group mb-3">
+                <span class="input-group-text">Medicine</span>
+                <select name="medicineID" id="medicineID"
+                class="form-control" required 
+                #medicineID="ngModel"
+                [(ngModel)]="medicinePrescribedService.formData.medicineID"
+                >
+                    <option default>Choose Medicine</option>
+                    <option *ngFor="let med of medicinePrescribedService.medicines"
+                    value="{{med.medicineID}}">{{med.medicineName}}</option>
+                </select>
+    
+                <span class="input-group-text">Dosage</span>
+                <select name="dosage" id="dosage"
+                class="form-control" required 
+                #dosage="ngModel"
+                [(ngModel)]="medicinePrescribedService.formData.dosage">
+                <option default>Choose Dosage</option>
+                <option value="0-0-1" >0-0-1</option>
+                <option value="0-1-0" >0-1-0</option>
+                <option value="0-1-1" >0-1-1</option>
+                <option value="1-0-0" >1-0-0</option>
+                <option value="1-0-1" >1-0-1</option>
+                <option value="1-1-0" >1-1-0</option>
+                <option value="1-1-1" >1-1-1</option>
+    
+                </select>
+                
+                <span class="input-group-text">Interval</span>
+                <select name="medinterval" id="medinterval"
+                class="form-control" required 
+                #medinterval="ngModel"
+                [(ngModel)]="medicinePrescribedService.formData.medinterval">
+                <option default>Choose Interval</option>
+                <option value="Dosage One" >Dosage One</option>
+                <option value="Dosage Two" >Dosage Two</option>
+                <option value="Dosage Three" >Dosage Three</option>
+                </select>
+    
+                <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
+                <div class="validation-error" 
+                    *ngIf="medicineID.touched && medicineID.invalid">
+                <div *ngIf="medicineID.errors"></div>
+            </div>
+            </div>
+    
+        </form>
+    </div>
 
     <!-- impoting lab tests component-->
-    <app-lab-test-prescribed></app-lab-test-prescribed>
+    <!-- <app-lab-test-prescribed></app-lab-test-prescribed> -->
+    <div>
+        <form name="testform" #form="ngForm" autocomplete="off" novalidate
+            (ngSubmit)="onSubmitTest(form)">
+        
+            <!-- <input type="number" name="consultationID" 
+            [(ngModel)]="labTestPrescribedService.formData.consultationID"> -->
+
+            <input type="number" hidden name="id" 
+            [(ngModel)]="labTestPrescribedService.formData.appointmentID">
+    
+            <div class="form-group"class="input-group mb-3">
+                <span class="input-group-text">Lab Test</span>
+                <select name="testID" id="testID"
+                class="form-control" required 
+                #testID="ngModel"
+                [(ngModel)]="labTestPrescribedService.formData.testID"
+                >
+                    <option default>Choose Test</option>
+                    <option *ngFor="let test of labTestPrescribedService.tests"
+                    value="{{test.testID}}">{{test.testName}}</option>
+                </select>
+    
+                <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
+            </div>
+    
+        </form>
+    </div>
 
     <!-- impoting notes component-->
-    <app-note></app-note>
+    <!-- <app-note></app-note> -->
+    <div>
+        <form name="noteform" #form="ngForm" autocomplete="off" novalidate
+            (ngSubmit)="onSubmitNote(form)">
+    
+            <!-- <input type="number" name="consultationID" 
+                [(ngModel)]="noteService.formData.consultationID"> -->
+    
+            <input type="number" hidden name="id" 
+                [(ngModel)]="noteService.formData.appointmentID">
+    
+            <div class="form-group" class="input-group mb-3">
+                <span class="input-group-text" >Notes</span>
+                <textarea name="notes" id="notes"
+                    #notes="ngModel" 
+                    [(ngModel)]="noteService.formData.notes"
+                    type="text" class="form-control"
+                    placeholder="Enter Notes"
+                    minlength="3" maxlength="25" required
+                    [ngClass]="{'is-invalid':notes.touched && notes.invalid}" 
+                ></textarea>
+                <div class="validation-error" *ngIf="notes.touched && notes.invalid">
+                    <div *ngIf="notes.errors">Notes Required</div>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="!(form.valid && form.dirty)">Add</button>
+            </div>
+        
+        </form>
+    </div>
     
     <hr>
 

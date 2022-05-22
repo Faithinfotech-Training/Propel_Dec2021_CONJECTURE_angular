@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MedicinePrescribedService } from 'src/app/shared/medicine-prescribed.service';
 
 @Component({
   selector: 'app-medicine-prescribed-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicinePrescribedListComponent implements OnInit {
 
-  constructor() { }
+  filter: string;
+
+  constructor(public medicinePrescribedService: MedicinePrescribedService) { }
 
   ngOnInit(): void {
+    this.medicinePrescribedService.getAllConsultationMedicine();
   }
 
 }

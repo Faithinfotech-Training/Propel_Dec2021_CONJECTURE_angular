@@ -20,6 +20,12 @@ export class MedicinePrescribedService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getAllConsultationMedicine(){
+    this.httpClient.get(environment.apiUrl+'/api/medpres')
+    .toPromise().then(response =>
+      this.medicinePrescribed= response as MedicinePrescribed[]);
+  }
+
   // insert consultation medicine
   insertConsultationMedicine(conmed: MedicinePrescribed): Observable<any>{
     return this.httpClient.post(environment.apiUrl+'/api/medpres/',conmed);

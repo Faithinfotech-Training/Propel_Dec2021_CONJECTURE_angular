@@ -1,4 +1,4 @@
-<div class="card-header">
+<div class="card-header" style="margin-top: 15px;">
     <i class="bi bi-person-lines-fill"></i>  Appointments-List
 </div>
 <div class="header">
@@ -14,7 +14,6 @@
               <th>Appointment ID</th>
               <th>Token Number</th>
               <th>Date of Appointment</th>
-              <th>Active</th>
               <th>Patient Name</th>
               <th>Doctor Name</th>
               <th>Action</th>
@@ -25,7 +24,6 @@
               <td>{{app.appointmentID}}</td>
               <td>{{app.tokenNumber}}</td>
               <td>{{app.dateOfAppointment | date: 'dd-MMM-yyyy'}}</td>
-              <td>{{app.active}}</td>
               <td>{{app.patient.fullName}}</td>
               <td>{{app.doctor.staff.fullName}}</td>
               <td><button (click)="consultPatient(app.appointmentID)" type="button" class="btn btn-success">Consult</button></td>

@@ -1,7 +1,7 @@
 <form name="medicineform" #form="ngForm" autocomplete="off" novalidate
-    (ngSubmit) ="onSubmit(form)">
+    (ngSubmit) ="onSubmit(form)" style="margin-top:20px;">
     <!--Id-->
-<input type="text" name="id" [(ngModel)]="medicineService.formData.medicineID">
+<input type="text" hidden name="id" [(ngModel)]="medicineService.formData.medicineID">
 
 <!--enter test Name-->
 <div class="form-group">

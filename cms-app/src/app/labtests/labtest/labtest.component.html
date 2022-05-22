@@ -1,0 +1,142 @@
+<form name="labform" #form="ngForm" autocomplete="off" novalidate
+    (ngSubmit) ="onSubmit(form)" style="margin-top: 20px;">
+<!--Id-->
+<input type="text" hidden name="id" [(ngModel)]="labtestService.formData.testID">
+
+<!--enter test code-->
+<div class="form-group">
+    <label>Test Code</label>
+    <input name="testCode" id="testCode"
+    #testCode="ngModel"
+    [(ngModel)]="labtestService.formData.testCode"
+    class="form-control" placeholder="Enter the code"
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':testCode.touched && testCode.invalid}">
+    <div class="validation-error"
+    *ngIf="testCode.touched && testCode.invalid">
+    <div *ngIf="testCode.errors">
+        Invalid code
+    </div>
+
+    </div>
+</div>
+
+<!--enter test Name-->
+<div class="form-group">
+    <label>Test Name</label>
+    <input name="testName" id="testName"
+    #testName="ngModel"
+    [(ngModel)]="labtestService.formData.testName"
+    class="form-control" placeholder="Enter test name"
+    minlength="3" maxlength="25" required
+    [ngClass]="{'is-valid':testName.touched && testName.invalid}">
+    <div class="validation-error"
+    *ngIf="testName.touched && testName.invalid">
+    <div *ngIf="testName.errors">
+        Invalid test name
+    </div>
+
+    </div>
+</div>
+
+<!--low range-->
+<div class="form-group">
+    <label>Low Range</label>
+    <input name="lowRange" id="lowRange"
+    #lowRange="ngModel"
+    [(ngModel)]="labtestService.formData.lowRange"
+    class="form-control" placeholder="Enter low range value"
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':lowRange.touched && lowRange.invalid}">
+    <div class="validation-error"
+    *ngIf="lowRange.touched && lowRange.invalid">
+    <div *ngIf="lowRange.errors">
+        Invalid Range
+    </div>
+
+    </div>
+</div>
+
+<!--High Range-->
+
+<div class="form-group">
+    <label>High Range</label>
+    <input name="highRange" id="highRange"
+    #highRange="ngModel"
+    [(ngModel)]="labtestService.formData.highRange"
+    class="form-control" placeholder="Enter high range value"
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':highRange.touched && highRange.invalid}">
+    <div class="validation-error"
+    *ngIf="highRange.touched && highRange.invalid">
+    <div *ngIf="highRange.errors">
+        Invalid Range
+    </div>
+
+    </div>
+</div>
+
+<!--Unit-->
+<div class="form-group">
+    <label>Unit</label>
+    <input name="unit" id="unit"
+    #unit="ngModel"
+    [(ngModel)]="labtestService.formData.unit"
+    class="form-control" placeholder="Enter unit "
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':unit.touched && unit.invalid}">
+    <div class="validation-error"
+    *ngIf="unit.touched && unit.invalid">
+    <div *ngIf="unit.errors">
+        enter correct unit
+    </div>
+
+    </div>
+</div>
+
+<!--price-->
+<div class="form-group">
+    <label>Price</label>
+    <input name="price" id="price"
+    #price="ngModel"
+    [(ngModel)]="labtestService.formData.price"
+    class="form-control" placeholder="Enter price "
+    minlength="2" maxlength="25" required
+    [ngClass]="{'is-valid':price.touched && price.invalid}">
+    <div class="validation-error"
+    *ngIf="price.touched && price.invalid">
+    <div *ngIf="price.errors">
+        enter price
+    </div>
+
+    </div>
+</div>
+
+<!--isActive-->
+<div class="form-group">
+    <label>IsActive</label>
+    <input name="isActive" id="isActive"
+    #isActive="ngModel"
+    [(ngModel)]="labtestService.formData.isActive"
+    class="form-control" placeholder="??"
+    minlength="1" maxlength="3" required
+    [ngClass]="{'is-valid':isActive.touched && isActive.invalid}">
+    <div class="validation-error"
+    *ngIf="isActive.touched && isActive.invalid">
+    <div *ngIf="isActive.errors">
+        enter is active or not
+    </div>
+
+    </div>
+</div>
+
+<!--submit button-->
+<div class="form-group">
+    <button type="submit" [disabled]="!(form.valid && form.dirty)"
+    class="btn btn-lg btn-primary form-control">Submit</button>
+
+</div>
+
+
+
+</form>

@@ -1,0 +1,130 @@
+
+<div class="container" *ngIf="Entry_View" style="margin-top: 20px;">
+
+    <div class="header">
+        <input class="form-control" type="text" 
+        placeholder="What do you want to Search ?" [(ngModel)]="filter" />
+        <br>
+         <button (click)="createNew()"  mat-raised-button type="submit"  
+         class=" save-button-style pull-left mr-1 ">Create New</button>
+    </div>
+
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Blood Group</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Date Of Birth</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ptf of patientService.patients  ">
+                <td>{{ptf.fullName}}</td>
+                <td>{{ptf.gender}} </td>
+                <td>{{ptf.bloodGroup}} </td>
+                <td>{{ptf.address}} </td>
+                <td>{{ptf.email}} </td>
+                <td>{{ptf.dateOfBirth | date: 'dd-MMM-yyyy'}} </td>
+                <td><button (click)="edit(ptf)" class="btn btn-outline-info">Edit</button>&nbsp;
+                    <button (click)="delete(ptf.patientID)" class="btn btn btn-outline-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div class="footer">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div> -->
+</div>
+
+<div *ngIf="!Entry_View">
+<form name=empform #form="ngForm" autocomplete="off" novalidate (ngSubmit)="onSubmit(form)">
+    <!--Id-->
+    <input type="hidden" name="patientID" [(ngModel)]="patientService.formData.patientID">
+
+    <!--Full Name-->
+    <div class="form-group">
+        <label>Full Name</label>
+        <input name="fullName" id="fullName" #fullName="ngModel" [(ngModel)]="patientService.formData.fullName" 
+        class="form-control" placeholder="Enter Full Name" minlength="8" maxlength="25" required 
+            [ngClass]="{'is-invalid':fullName.touched && fullName.invalid}">
+        <div class="validation-error"   *ngIf="fullName.touched && fullName.invalid">
+            <div *ngIf="fullName.errors">
+                Invalid Full Name 
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>gender</label>
+        <input name="gender" id="gender" #gender="ngModel" [(ngModel)]="patientService.formData.gender"
+            class="form-control" placeholder="Enter gender"minlength="2" maxlength="20" required [ngClass]="{'is-invalid':gender.touched && gender.invalid}">
+        <div class="validation-error" *ngIf="gender.touched && gender.invalid">
+            <div *ngIf="gender.errors">
+                gender is Required
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>bloodGroup</label>
+        <input name="bloodGroup" id="bloodGroup" #bloodGroup="ngModel" [(ngModel)]="patientService.formData.bloodGroup"
+            class="form-control" placeholder="Enter bloodGroup"minlength="2" maxlength="20" required [ngClass]="{'is-invalid':bloodGroup.touched && bloodGroup.invalid}">
+        <div class="validation-error" *ngIf="bloodGroup.touched && bloodGroup.invalid">
+            <div *ngIf="bloodGroup.errors">
+                bloodGroup is Required
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label>address</label>
+        <input name="address" id="address" #address="ngModel" [(ngModel)]="patientService.formData.address"
+            class="form-control" placeholder="Enter address"minlength="2" maxlength="20" required [ngClass]="{'is-invalid':address.touched && address.invalid}">
+        <div class="validation-error" *ngIf="address.touched && address.invalid">
+            <div *ngIf="address.errors">
+                address is Required
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>email</label>
+        <input name="email" id="email" #email="ngModel" [(ngModel)]="patientService.formData.email"
+            class="form-control" placeholder="Enter email"minlength="2" maxlength="20" required [ngClass]="{'is-invalid':email.touched && email.invalid}">
+        <div class="validation-error" *ngIf="email.touched && email.invalid">
+            <div *ngIf="email.errors">
+                email is Required
+            </div>
+        </div>
+    </div>
+
+    <!--DateOfJoining-->
+    <div class="form-group">
+        <label>Date Of Joining</label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth"
+            #dateOfBirth="ngModel" 
+            [(ngModel)]="patientService.formData.dateOfBirth"
+            class="form-control" required 
+            [ngClass]="{'is-invalid':dateOfBirth.touched && dateOfBirth.invalid}">
+        <div class="validation-error" 
+            *ngIf="dateOfBirth.touched && dateOfBirth.invalid">
+            <div *ngIf="dateOfBirth.errors">
+                Date is Required
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="form-group">
+        <button type="submit" [disabled]="!(form.valid && form.dirty)"
+        class="btn btn-lg btn-primary form-control"> Submit
+        </button>
+    </div>
+
+</form>
+</div>

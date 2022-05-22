@@ -7,4 +7,5 @@ export class Patient {
     bloodGroup: string='';
     address: string='';
     email: string='';
+    isActive:string="";
 }
